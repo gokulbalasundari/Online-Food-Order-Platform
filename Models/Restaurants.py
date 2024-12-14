@@ -19,13 +19,12 @@ class Restaurants(AbstractItem):
 
         for menu in FoodMenus:
             if not isinstance(menu,FoodMenu):
-                print('The Menu was Not in FoodMenus')
+                print('\nThe Menu was Not in FoodMenus')
                 return
         self.__FoodMenu=FoodMenus
 
     def DisplayDetails(self, index):
-        print(f'{index}.{self.name} => {self.rating} => {self.location}')
-        print()
+        print(f'\n{index}.{self.name} => {self.rating} => {self.location}')
         return
     
 

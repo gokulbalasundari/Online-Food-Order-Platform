@@ -7,4 +7,5 @@ class FoodItem(AbstractItem):
         self.describtion=describtion
 
     def DisplayDetails(self, index):
-        return super().DisplayDetails(index)    
+        print(f'\n {index}.{self.name} => {self.rating} => {self.price} => {self.describtion}')
+        return     

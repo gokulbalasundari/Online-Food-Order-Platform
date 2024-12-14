@@ -5,18 +5,19 @@ class FoodApp:
 
     @staticmethod
     def Init():
-        print("Welcome to Online Food  Order Platform")
 
         loginsystem=LoginSystem()
 
         while True:
+            print("\nWelcome to Online Food  Order Platform")
+            print()
 
             for option in FoodApp.__options:
                 print(f'{option}.{FoodApp.__options[option]}', end=' ')
             print()  
 
             try:
-                choice=int(input('Enter Your Choices: '))
+                choice=int(input('\nEnter Your Choices: '))
                 loginsystem.VaildChoice(choice=choice)
 
             except(ValueError):

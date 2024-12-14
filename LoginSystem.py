@@ -1,4 +1,4 @@
-from User import User
+from Models.User import User
 from Manager.UserManager import UserManager
 from Controller.MainMenu import MainMenu
 
