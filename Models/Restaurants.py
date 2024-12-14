@@ -4,8 +4,8 @@ from Models.FoodMenu import FoodMenu
 class Restaurants(AbstractItem):
 
     def __init__(self,name,rating,location,offer):
-        self.name=name
-        self.rating=rating
+     
+        super().__init__(name,rating)
         self.location=location
         self.offer=offer
         self.__FoodMenu=[]
@@ -22,5 +22,10 @@ class Restaurants(AbstractItem):
                 print('The Menu was Not in FoodMenus')
                 return
         self.__FoodMenu=FoodMenus
+
+    def DisplayDetails(self, index):
+        print(f'{index}.{self.name} => {self.rating} => {self.location}')
+        print()
+        return
     
 

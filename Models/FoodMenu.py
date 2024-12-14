@@ -3,7 +3,7 @@ from Models.FoodItems import FoodItem
 
 class  FoodMenu(AbstractItem):
     def __init__(self,name):
-        super.__init__(name)
+        super().__init__(name)
         self.__FoodItem=[]
 
     @property
@@ -15,4 +15,7 @@ class  FoodMenu(AbstractItem):
         for Item in Items:
             if not isinstance(Item,FoodItem):
                 print('Invaid Food Items ')
-        self.__FoodItem=Items        
+        self.__FoodItem=Items       
+
+    def DisplayDetails(self, index):
+        return super().DisplayDetails(index)     

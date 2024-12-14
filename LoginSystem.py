@@ -23,18 +23,21 @@ class LoginSystem:
         email=input('enter your email: ')
         password=input('Enter Your Password: ')
         user=User(name=name,age=age,email=email,pwd=password)
-        user=UserManager.AddUser(user)
-        if user:
-            menu=MainMenu()
-            
+        UserManager.AddUser(user)
+        
+
 
 
 
     def Login(self):
         email=input('Enter your Email : ')
         pwd=input('Enter your Password : ')
-        UserManager.FindUser(email=email,pwd=pwd)
-
-        
+        user=UserManager.FindUser(email=email,pwd=pwd)
+        if user:
+            menu=MainMenu()
+            menu.Start(user)
+        else:
+            print("Invalid User... Retry ")  
+  
     def Exit(self):
         exit()
