@@ -18,9 +18,11 @@ class FoodApp:
             try:
                 choice=int(input('Enter Your Choices: '))
                 loginsystem.VaildChoice(choice=choice)
-                
+
             except(ValueError):
                 print("Invaild Input Type ..Retry")
+
+            
 
 
 
