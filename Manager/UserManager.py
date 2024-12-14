@@ -19,5 +19,5 @@ class UserManager:
             if user.email==email and user.password==pwd:
                 print('Successfully Login')
                 return user
-        print('Invaild Password or Email')
+        return None
     

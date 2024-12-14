@@ -1,4 +1,5 @@
 from Models.AbstractModels import AbstractItem
+from Models.FoodMenu import FoodMenu
 
 class Restaurants(AbstractItem):
 
@@ -7,4 +8,19 @@ class Restaurants(AbstractItem):
         self.rating=rating
         self.location=location
         self.offer=offer
-        self.FoodMenu=[]
+        self.__FoodMenu=[]
+
+    @property
+    def FoodMenu(self):
+        return self.__FoodMenu
+    
+    @FoodMenu.setter
+    def FoodMenu(self,FoodMenus):
+
+        for menu in FoodMenus:
+            if not isinstance(menu,FoodMenu):
+                print('The Menu was Not in FoodMenus')
+                return
+        self.__FoodMenu=FoodMenus
+    
+

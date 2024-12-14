@@ -1,5 +1,6 @@
 from User import User
 from Manager.UserManager import UserManager
+from Controller.MainMenu import MainMenu
 
 class LoginSystem:
 
@@ -22,13 +23,18 @@ class LoginSystem:
         email=input('enter your email: ')
         password=input('Enter Your Password: ')
         user=User(name=name,age=age,email=email,pwd=password)
-        UserManager.AddUser(user)
+        user=UserManager.AddUser(user)
+        if user:
+            menu=MainMenu()
+            
+
 
 
     def Login(self):
         email=input('Enter your Email : ')
         pwd=input('Enter your Password : ')
         UserManager.FindUser(email=email,pwd=pwd)
+
         
     def Exit(self):
         exit()
