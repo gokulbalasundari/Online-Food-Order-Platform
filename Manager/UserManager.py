@@ -18,6 +18,9 @@ class UserManager:
     def FindUser(cls,email,pwd):
         for user in cls.__Users:
             if user.email==email and user.password==pwd:
-                return user
+                return user                
         return None
     
+    @classmethod
+    def new(cls):
+        pass
