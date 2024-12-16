@@ -18,5 +18,5 @@ class  FoodMenu(AbstractItem):
         self.__FoodItem=Items       
 
     def DisplayDetails(self, index):
-        print(f'{index}.=> {self.name}')
+        print(f'\n{index} => {self.name}')
         return    

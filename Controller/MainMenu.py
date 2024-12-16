@@ -11,6 +11,7 @@ class MainMenu:
 
     def ShowRestaurants(self):
 
+        print('\n----- Restaurants-----')
         for i,res in enumerate(self.__FoodManager.Restaurants,1) :
             res.DisplayDetails(i)
         print()    
@@ -24,7 +25,6 @@ class MainMenu:
        
     def ShowFoodMenus(self,res=None):
         print(f'\n{res.name} Restaurants FoodMenus  ')
-        print()
         for i,menu in enumerate(res.FoodMenu,1) :
             menu.DisplayDetails(i)
         print() 
@@ -49,7 +49,21 @@ class MainMenu:
 
             choice=list(map(int,input('Enter FoodItems like 1,2 :').split(',')))
             cart=Cart(choices=choice,res_name=res.name,fooditems=foodmenu.FoodItem)
-            cart.ProcessOrder()
+            cart.ProcessOrder() 
+        else:
+
+            for i,res in enumerate(self.__FoodManager.Restaurants,1):
+                print(f'\n----- {i}.Restaurant-----')
+                res.DisplayDetails(i) 
+                for j,fmenu in enumerate(res.FoodMenu,1):
+                    print(f'\n----- {res.name} Food Menu ------')
+                    fmenu.DisplayDetails(j)    
+                    for k,item in enumerate(fmenu.FoodItem,1):
+                        item.DisplayDetails(k)
+
+            choice=int(input('\nChoice the Restaurants : ') ) 
+            res= self.__FoodManager.Restaurants[choice-1]
+            self.ShowFoodMenus(res)          
 
         
     def SearchRestaurants(self):
@@ -62,16 +76,49 @@ class MainMenu:
 
 
     def SearchFoodItems(self):
-        pass
+           
+            food_name=input('Enter the Food Name : ')
+            res_box=[]
+            item_box=[]
+            for res in (self.__FoodManager.Restaurants):  
+                for fmenu in (res.FoodMenu):
+                    for item in (fmenu.FoodItem):
+                        if food_name==item.name:
+                            res_box.append(res)
+                            item_box.append(item)
+            if res_box:
+                print(f'\n-----Hey! {food_name} You Can Order in the Restaurants------')
+                for i,res in enumerate(res_box,1):
+                    res.DisplayDetails(i)
+                    for fmenu in (res.FoodMenu):   
+                        for j,item in enumerate (fmenu.FoodItem,1):
+                            if food_name==item.name:
+                                item.DisplayDetails(j)
+                            
+                            
+                    
+                order=input('\nIf you want to Order => yes [y] : No[n] ')  
+                if order=='y'or order=='yes':
+                    lock=True
+                    while lock==True:
+                        try:
+                            choice_res=int(input('\nEnter Where You Want to Order like 1,2 : '))
+                            quentity=int(input('\nEnter the Quentity :'))
+                            order_item=item_box[choice_res-1]
+                            order_res=res_box[choice_res-1]
+                            cart=Cart()
+                            lock=cart.ProcessOrder(res=order_res,quantity=quentity,item=order_item)
 
+                        except(IndexError,ValueError):
+                            print('\nYour are Enter Invaild Choice..retry')    
 
-            
-
+            else:
+                print("\nThe Food Was Not Found ..")    
 
 
        
     def Logout(self):
-        print(f'Thank You {MainMenu.__curentuser.name}')
+        print(f'\n Thank You {MainMenu.__curentuser.name}')
         exit()
 
     def Start(self,user):

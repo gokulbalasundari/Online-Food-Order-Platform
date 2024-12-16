@@ -9,7 +9,7 @@ class UserManager:
         # we need to check give object is from User
         if isinstance(userobj,User):
             cls.__Users.append(userobj)
-            print(f"{userobj.name} was succesfully Register")
+            print(f"\nHey! {userobj.name}, you are succesfully Register")
             print()
         else:
             print('The give user was invaild')

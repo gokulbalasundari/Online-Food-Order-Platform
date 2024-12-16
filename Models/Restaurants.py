@@ -24,7 +24,7 @@ class Restaurants(AbstractItem):
         self.__FoodMenu=FoodMenus
 
     def DisplayDetails(self, index):
-        print(f'\n{index}.{self.name} => {self.rating} => {self.location}')
+        print(f'\n{index}.Name :{self.name}  Rating :{self.rating}  Location:{self.location}')
         return
     
 
