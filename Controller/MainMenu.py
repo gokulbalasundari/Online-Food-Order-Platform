@@ -30,7 +30,13 @@ class MainMenu:
 
         
     def SearchRestaurants(self):
-        pass
+        res_name=input('Enter Your Restaurants Name : ')
+        res=self.__FoodManager._FindRestaurants(res_name)
+        if res is not None:
+            self.ShowFoodMenus(res)
+        else:
+            print(f'The {res_name} Restaurant was not Found')        
+
     def SearchFoodItems(self):
         pass
 

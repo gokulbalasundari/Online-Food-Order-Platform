@@ -23,4 +23,5 @@ class UserManager:
     
     @classmethod
     def new(cls):
+        valu=10
         pass

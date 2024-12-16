@@ -6,6 +6,7 @@ class FoodManager:
 
     def __init__(self):
         self.Restaurants=self.__PrepareRestaurants()
+
     def __PrepareFoodItems(self):
 
         Item1=FoodItem('ChinkanBiriyani',4.8,200,"***")
@@ -40,7 +41,14 @@ class FoodManager:
         res2.FoodMenu=[FoodMenus[1],FoodMenus[2]]
         res3=Restaurants('KFC',4.2,'Coimbatore','30%')
         res3.FoodMenu=[FoodMenus[2]]
-
-        print('Food Done')
         return [res1,res2,res3]
+    
+    def _FindRestaurants(self,res_name):
+
+        for res in self.Restaurants:
+            if res.name==res_name:
+                print('\nThe Restanurants was Found..')
+                print(f'{res.name}=> Rating: {res.rating}  Location : {res.location} Offer: {res.offer}')
+                return res
+        return None    
         
