@@ -20,8 +20,4 @@ class UserManager:
             if user.email==email and user.password==pwd:
                 return user                
         return None
-    
-    @classmethod
-    def new(cls):
-        valu=10
-        pass
+

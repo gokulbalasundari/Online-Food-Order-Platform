@@ -1,4 +1,5 @@
 from Manager.FoodManager import FoodManager
+from Models.Cart import Cart
 
 class MainMenu:
 
@@ -21,12 +22,34 @@ class MainMenu:
         except(IndexError,ValueError):
             print('Invaid  Choice Retry...')   
        
-    def ShowFoodItems(self,res,choice_menu=None):
-        print(f'\n{res.name} {choice_menu.name} Food Items')
+    def ShowFoodMenus(self,res=None):
+        print(f'\n{res.name} Restaurants FoodMenus  ')
         print()
-        for i,item in enumerate(choice_menu.FoodItem,1):
-            item.DisplayDetails(i)
-        print()    
+        for i,menu in enumerate(res.FoodMenu,1) :
+            menu.DisplayDetails(i)
+        print() 
+
+        try:
+            choice=int(input("Choice Your FoodMenus : ")) 
+            choice_foodmenu=res.FoodMenu[choice-1]
+            self.ShowFoodItems(res,choice_foodmenu)
+
+        except(IndexError,ValueError):
+            print('Invaid  Choice Retry...')   
+
+
+    def ShowFoodItems(self,res=None,foodmenu=None):
+
+        if res and foodmenu:
+            print(f'\n{res.name} {foodmenu.name} Food Items')
+            print()
+            for i,item in enumerate(foodmenu.FoodItem,1):
+                item.DisplayDetails(i)
+            print()    
+
+            choice=list(map(int,input('Enter FoodItems like 1,2 :').split(',')))
+            cart=Cart(choices=choice,res_name=res.name,fooditems=foodmenu.FoodItem)
+            cart.ProcessOrder()
 
         
     def SearchRestaurants(self):
@@ -37,23 +60,9 @@ class MainMenu:
         else:
             print(f'The {res_name} Restaurant was not Found')        
 
+
     def SearchFoodItems(self):
         pass
-
-    def ShowFoodMenus(self,res=None):
-        print(f'\n{res.name} Restaurants FoodMenus  ')
-        print()
-        for i,menu in enumerate(res.FoodMenu,1) :
-            menu.DisplayDetails(i)
-        print() 
-
-        try:
-            choice=int(input("Choice Your FoodMenus : ")) 
-            choice_menu=res.FoodMenu[choice-1]
-            self.ShowFoodItems(res,choice_menu)
-
-        except(IndexError,ValueError):
-            print('Invaid  Choice Retry...')   
 
 
             

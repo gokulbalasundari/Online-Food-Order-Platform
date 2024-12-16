@@ -12,7 +12,7 @@ class FoodManager:
         Item1=FoodItem('ChinkanBiriyani',4.8,200,"***")
         Item2=FoodItem('Mattan Biryani',4.2,300,"***")
         Item3=FoodItem('Rice',4.0,100,"***")
-        Item4=FoodItem('Pannire Patter Masala',4.5,130,"***")
+        Item4=FoodItem('Pannir Patter Masala',4.5,130,"***")
         Item5=FoodItem('Fraid Rise',4.9,90,"***")
         Item6=FoodItem('Noodules',4.3,100,"***")
 
