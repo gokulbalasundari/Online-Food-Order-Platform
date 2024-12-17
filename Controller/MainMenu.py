@@ -61,14 +61,18 @@ class MainMenu:
                     for k,item in enumerate(fmenu.FoodItem,1):
                         item.DisplayDetails(k)
 
-            choice=int(input('\nChoice the Restaurants : ') ) 
-            res= self.__FoodManager.Restaurants[choice-1]
-            self.ShowFoodMenus(res)          
+            try:
+                choice=int(input('\nChoice the Restaurants : ') ) 
+                res= self.__FoodManager.Restaurants[choice-1]
+                self.ShowFoodMenus(res)       
+            except(ValueError,IndexError):
+                print('Invalid Choice ..Retry')
+
 
         
     def SearchRestaurants(self):
         res_name=input('Enter Your Restaurants Name : ')
-        res=self.__FoodManager._FindRestaurants(res_name)
+        res=self.__FoodManager.FindRestaurants(res_name)
         if res is not None:
             self.ShowFoodMenus(res)
         else:
